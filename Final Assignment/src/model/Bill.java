@@ -1,6 +1,9 @@
 package model;
 
-public class Bill {
+import java.io.Serializable;
+
+public class Bill implements Serializable {
+    private static final long serialVersionUID = 1L;
     private double baseFee;
     private double discountAmount;
     private double penaltyAmount;
@@ -65,9 +68,9 @@ public class Bill {
 
     public String generateDetailedReceipt() {
         StringBuilder sb = new StringBuilder();
-        sb.append("=========================================\n");
-        sb.append("        RENTAL SETTLEMENT RECEIPT        \n");
-        sb.append("=========================================\n");
+        sb.append("=============================================\n");
+        sb.append("          RENTAL SETTLEMENT RECEIPT          \n");
+        sb.append("=============================================\n");
         
         // Renter & Equipment Info
         if (user != null) {
@@ -77,11 +80,11 @@ public class Bill {
         if (equipment != null) {
             sb.append(String.format("Equipment:   %s (%s)\n", equipment.getName(), equipment.getCategory()));
         }
-        sb.append("-----------------------------------------\n");
+        sb.append("---------------------------------------------\n");
 
         // 1. Base Rental Fee with details
         double dailyRate = (equipment != null) ? equipment.getDailyRentalRate() : 0.0;
-        sb.append(String.format("Base Rental Fee:            $%8.2f\n", baseFee));
+        sb.append(String.format("%-33s $%8.2f\n", "Base Rental Fee:", baseFee));
         sb.append(String.format("  (%d days × $%.2f/day)\n", plannedDurationDays, dailyRate));
         sb.append("\n");
 
@@ -98,7 +101,8 @@ public class Bill {
                 discountType = "Final Year Student Discount";
             }
         }
-        sb.append(String.format("  %s (%.0f%%):       -$%8.2f\n", discountType, discountPct, discountAmount));
+        String discountLabel = String.format("  %s (%.0f%%):", discountType, discountPct);
+        sb.append(String.format("%-33s-$%8.2f\n", discountLabel, discountAmount));
         sb.append("\n");
 
         // 3. Penalties / Additional Charges
@@ -117,8 +121,9 @@ public class Bill {
             }
             double latePenaltyPerDay = dailyRate * rateMultiplier;
             double totalLatePenalty = lateDays * latePenaltyPerDay;
-            sb.append(String.format("  Late Return Penalty (x%.1f rate):\n", rateMultiplier));
-            sb.append(String.format("    %d late days × $%.2f/day: +$%8.2f\n", lateDays, latePenaltyPerDay, totalLatePenalty));
+            sb.append(String.format("  Late Return (x%.1f rate):\n", rateMultiplier));
+            String lateLabel = String.format("    %d days × $%.2f/day:", lateDays, latePenaltyPerDay);
+            sb.append(String.format("%-33s+$%8.2f\n", lateLabel, totalLatePenalty));
             hasPenalties = true;
         }
         if (isDamaged) {
@@ -130,7 +135,7 @@ public class Bill {
                     damageFee = 300.0;
                 }
             }
-            sb.append(String.format("  Equipment Damage Fee:     +$%8.2f\n", damageFee));
+            sb.append(String.format("%-33s+$%8.2f\n", "  Equipment Damage Fee:", damageFee));
             hasPenalties = true;
         }
         
@@ -141,30 +146,29 @@ public class Bill {
 
         // 4. Deposit
         sb.append("Deposit Details:\n");
-        sb.append(String.format("  Security Deposit:\n"));
-        sb.append(String.format("    1 item × $50.00 =        $%8.2f\n", depositPaid));
+        sb.append(String.format("%-33s $%8.2f\n", "  Security Deposit:", depositPaid));
         sb.append("\n");
 
         // 5. Final Settlement
-        sb.append("-----------------------------------------\n");
+        sb.append("---------------------------------------------\n");
         sb.append("FINAL SETTLEMENT SUMMARY\n");
-        sb.append("-----------------------------------------\n");
-        sb.append(String.format("Subtotal (Base Rental Fee):  $%8.2f\n", baseFee));
-        sb.append(String.format("Total Discounts:            -$%8.2f\n", discountAmount));
-        sb.append(String.format("Total Charges (Penalties):  +$%8.2f\n", penaltyAmount));
-        sb.append(String.format("Security Deposit Paid:       $%8.2f\n", depositPaid));
-        sb.append("-----------------------------------------\n");
+        sb.append("---------------------------------------------\n");
+        sb.append(String.format("%-33s $%8.2f\n", "Subtotal (Base Rental Fee):", baseFee));
+        sb.append(String.format("%-33s-$%8.2f\n", "Total Discounts:", discountAmount));
+        sb.append(String.format("%-33s+$%8.2f\n", "Total Charges (Penalties):", penaltyAmount));
+        sb.append(String.format("%-33s $%8.2f\n", "Security Deposit Paid:", depositPaid));
+        sb.append("---------------------------------------------\n");
 
         if (netSettlement >= 0) {
             sb.append(String.format("GRAND TOTAL REFUND TO USER:  $%8.2f\n", netSettlement));
-            sb.append("=========================================\n");
-            sb.append("   STATUS: CLOSED - DEPOSIT REFUNDED     \n");
+            sb.append("=============================================\n");
+            sb.append("      STATUS: CLOSED - DEPOSIT REFUNDED      \n");
         } else {
             sb.append(String.format("GRAND TOTAL OUTSTANDING DUE: $%8.2f\n", Math.abs(netSettlement)));
-            sb.append("=========================================\n");
-            sb.append("   STATUS: CLOSED - BALANCE PAID         \n");
+            sb.append("=============================================\n");
+            sb.append("        STATUS: CLOSED - BALANCE PAID        \n");
         }
-        sb.append("=========================================\n");
+        sb.append("=============================================\n");
         return sb.toString();
     }
 }

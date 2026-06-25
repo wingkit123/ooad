@@ -1,6 +1,8 @@
 package model;
 
 public class LaboratoryEquipment extends Equipment {
+    private static final long serialVersionUID = 1L;
+
     public LaboratoryEquipment(String equipmentId, String name, double dailyRentalRate) {
         super(equipmentId, name, "Laboratory Equipment", dailyRentalRate);
     }

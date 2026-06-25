@@ -1,10 +1,16 @@
 package model;
 
-public class User {
-    public enum UserType {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    public enum UserType implements Serializable {
         STUDENT,
         STAFF,
-        FINAL_YEAR_STUDENT
+        FINAL_YEAR_STUDENT;
+
+        private static final long serialVersionUID = 1L;
     }
 
     private String userId;

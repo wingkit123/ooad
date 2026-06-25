@@ -1,5 +1,6 @@
 package manager;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,8 @@ import model.Equipment;
 import model.RentalRecord;
 import model.User;
 
-public class RentalManager {
+public class RentalManager implements Serializable {
+    private static final long serialVersionUID = 1L;
     private List<RentalRecord> records;
 
     public RentalManager() {

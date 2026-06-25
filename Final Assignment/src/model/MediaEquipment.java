@@ -1,6 +1,8 @@
 package model;
 
 public class MediaEquipment extends Equipment {
+    private static final long serialVersionUID = 1L;
+
     public MediaEquipment(String equipmentId, String name, double dailyRentalRate) {
         super(equipmentId, name, "Media Equipment", dailyRentalRate);
     }

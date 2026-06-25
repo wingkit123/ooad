@@ -1,11 +1,13 @@
 package manager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import model.Equipment;
 
-public class EquipmentManager {
+public class EquipmentManager implements Serializable {
+    private static final long serialVersionUID = 1L;
     private List<Equipment> inventory;
 
     public EquipmentManager() {

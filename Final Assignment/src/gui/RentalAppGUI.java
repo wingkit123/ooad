@@ -364,7 +364,7 @@ public class RentalAppGUI extends JFrame {
             BorderFactory.createEtchedBorder(), "Billing Settlement Receipt", TitledBorder.LEFT, TitledBorder.TOP,
             new Font("Segoe UI", Font.BOLD, 12)
         ));
-        receiptArea = new JTextArea(15, 38);
+        receiptArea = new JTextArea(25, 45);
         receiptArea.setEditable(false);
         receiptArea.setFont(new Font("Courier New", Font.PLAIN, 12));
         rightPanel.add(new JScrollPane(receiptArea), BorderLayout.CENTER);

@@ -1,11 +1,16 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class RentalRecord {
-    public enum RentalStatus {
+public class RentalRecord implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    public enum RentalStatus implements Serializable {
         ACTIVE,
-        RETURNED
+        RETURNED;
+
+        private static final long serialVersionUID = 1L;
     }
 
     private String recordId;

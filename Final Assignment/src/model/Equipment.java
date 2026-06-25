@@ -1,11 +1,17 @@
 package model;
 
-public abstract class Equipment {
-    public enum EquipmentStatus {
+import java.io.Serializable;
+
+public abstract class Equipment implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    public enum EquipmentStatus implements Serializable {
         AVAILABLE,
         RENTED,
         MAINTENANCE,
-        DAMAGED
+        DAMAGED;
+
+        private static final long serialVersionUID = 1L;
     }
 
     private String equipmentId;
