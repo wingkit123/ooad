@@ -32,9 +32,9 @@ Clear, non-complex English phrasing is paired with Chinese contextual notes (`[ä
 > * **Presenter 3:** [Name & ID] - Live System Presenter
 > * **Presenter 4:** [Name & ID] - Systems Integrator
 > 
-> *Visual Cue: Switch to Slide 2 - System Overview Map*
+> *Visual Cue: Switch to Slide 2 - System Overview Map (Package Structure)*
 > 
-> Our application is built to optimize administrative workflows inside clinical environments. The entire object blueprint and package structures are fully detailed in our repository named `"wingkit123/ooad"`.
+> To give you a high-level view of our architecture, we designed a clean, layered package structure. At the top, our User Interface layer handles user inputs and views. This connects to our System Controller, which acts as a central Facade to delegate requests down to specialized services like Appointment, Patient, and Authentication services. Finally, our data is managed in the Repository layer, supporting our core Domain Models.
 > 
 > Let's open our structural blueprints and examine Section 2: the Class Diagram."
 
