@@ -1,20 +1,22 @@
-# Hospital Management System (HMS) - Presentation Video Script (Updated)
+# Hospital Management System (HMS) - Presentation Video Script (Final Code-Only Version)
 
-This script follows the exact 5-section sequence required by your guidelines. Section 4 is now fully self-contained for one single presenter to demonstrate the live running system. 
+This script follows the exact 5-section sequence required by Section 7 of the assignment rubric. 
+* Section 4 is fully self-contained for Presenter 3 to perform a solo demo.
+* Section 5 is custom-tailored exclusively for Wing Kit to deliver a high-impact, professional code review of core OOP principles.
 
-Clear English phrasing is paired with Chinese contextual notes (`[中文提示]`) to assist with technical terms and transitions.
+Clear, non-complex English phrasing is paired with Chinese contextual notes (`[中文提示]`) to aid delivery.
 
 ---
 
-## 🕒 Video Timing & Presenter Rotation Sheet (Revised)
+## 🕒 Video Timing & Presenter Rotation Sheet (Finalized)
 
 | Rubric Section | Presentation Topic | Target Timing | Primary Speaker |
 | :--- | :--- | :--- | :--- |
 | **Section 1** | **Introduction & System Overview** | 0:00 - 1:00 (1 min) | Presenter 1 |
-| **Section 2** | **Class Diagram Design & Rationale** | 1:00 - 4:00 (3 mins) | Presenter 1 & **Presenter 2 (Wing Kit)** |
-| **Section 3** | **Sequence Diagrams Workflow Analysis** | 4:00 - 7:00 (3 mins) | **Presenter 2 (Wing Kit)** & Presenter 4 |
-| **Section 4** | **Live System Functional Demonstration** | 7:00 - 13:00 (6 mins) | **Presenter 3 (Solo Demo Friend)** |
-| **Section 5** | **Code Architecture & OOP Implementation** | 13:00 - 15:00 (2 mins) | Presenter 4 |
+| **Section 2** | **Class Diagram Design & Rationale** | 1:00 - 4:00 (3 mins) | Presenter 1 & Presenter 4 |
+| **Section 3** | **Sequence Diagrams Workflow Analysis** | 4:00 - 7:00 (3 mins) | Presenter 4 |
+| **Section 4** | **Live System Functional Demonstration** | 7:00 - 13:00 (6 mins) | Presenter 3 (Solo Demo Friend) |
+| **Section 5** | **Code Architecture & OOP Implementation** | 13:00 - 15:00 (2 mins) | **Presenter 2 (Wing Kit - Code Only)** |
 
 ---
 
@@ -24,119 +26,116 @@ Clear English phrasing is paired with Chinese contextual notes (`[中文提示]`
 **[Screen Action]:** *Show Title Slide containing "Hospital Management System (HMS) MVP", Group Section, and all 4 Student Names/IDs clearly listed.*
 
 **Presenter 1:**
-> "Hello everyone, and welcome to our project presentation. Our team has designed and implemented a standalone **Hospital Management System MVP** using Java Swing. Before we begin, let me introduce our group members:
+> "Hello everyone, and welcome to our project presentation. Our team has designed and implemented a standalone **Hospital Management System MVP** using Java Swing templates. Before we begin, let me introduce our group members:
 > * **Presenter 1:** [Name & ID] - Project Coordinator
-> * **Presenter 2 (Wing Kit):** See Wing Kit [& ID] - Lead Architect & Core Logic Developer
+> * **Presenter 2 (Wing Kit):** See Wing Kit [& ID] - Lead Software Engineer & Architect
 > * **Presenter 3:** [Name & ID] - Live System Presenter
-> * **Presenter 4:** [Name & ID] - Systems Integrator & Code Reviewer
+> * **Presenter 4:** [Name & ID] - Systems Integrator
 > 
 > *Visual Cue: Switch to Slide 2 - System Overview Map*
 > 
-> Our application is built to improve medical workflows by supporting three core roles: Admin, Doctor, and Receptionist. The complete system implementation and model diagrams are fully detailed in our repository named `"wingkit123/ooad"`.
+> Our application is built to optimize administrative workflows inside clinical environments. The entire object blueprint and package structures are fully detailed in our repository named `"wingkit123/ooad"`.
 > 
 > Let's open our structural blueprints and examine Section 2: the Class Diagram."
 
 ---
 
 ### 🎬 Section 2: Class Diagram (1:00 - 4:00)
-**[Screen Action]:** *Switch on-screen image to your Class Diagram. Zoom in onto the upper section containing the User class hierarchy.*
+**[Screen Action]:** *Switch on-screen image to your Class Diagram. Zoom in onto the upper section containing the base User attributes.*
 
 **Presenter 1:**
-> "For our static structure design, we created a centralized object model mapped across specific domain packages. 
+> "For our static structure design, we organized our domain objects into dedicated model packages.
 > 
-> *(Point mouse cursor to the top `User` box)* At the foundation of our access control model, we have an abstract base class `User`. This class encapsulates shared account credentials like `username`, `password`, and `displayName`. To support distinct roles inside a hospital, we use an Enum class called `Role`, which contains `ADMIN`, `DOCTOR`, and `RECEPTIONIST`.
+> *(Point mouse cursor to the top `User` box)* At the foundation of our access control model, we have an abstract base class named `User`. This class encapsulates shared account attributes such as `username`, `password`, and `displayName`. To enforce strict role boundaries across the application, we coupled this structure with an Enum class called `Role`, which defines our constant entries for `ADMIN`, `DOCTOR`, and `RECEPTIONIST`.
 > 
-> I will now pass the floor to Wing Kit to explain our structural inheritance and design justifications."
+> Presenter 4 will now explain our structural relationships and design pattern justifications."
 
-**Presenter 2 (Wing Kit):**
-> "Thank you, Presenter 1. Let's look closer at our structural hierarchy and class relationships `[中文提示: 类的继承与关联]`.
+**Presenter 4:**
+> "Thank you, Presenter 1. Let's look closer at our structural associations and object constraints.
 > 
-> *(Hover mouse cursor over the inheritance lines pointing down to sub-classes)* We implemented the principle of **Inheritance** `[中文提示: 继承]` by extending our base `User` class into three concrete sub-classes: `AdminUser`, `DoctorUser`, and `ReceptionistUser`. Each subclass overrides a polymorphic method to deliver role-specific dashboards back to the user interface.
+> *(Hover mouse cursor over the inheritance arrows)* We implemented the principle of **Inheritance** by extending our base `User` class into three concrete sub-classes: `AdminUser`, `DoctorUser`, and `ReceptionistUser`. This layout forces structural consistency while allowing polymorphic behavior when loading specific user views.
 > 
 > *Visual Cue: Move mouse cursor to point to `Appointment`, `Patient`, and `Doctor` boxes*
 > 
-> *(Point to `Appointment` connections)* An `Appointment` object maintains a clear **Composition** relationship `[中文提示: 组合关系]` with exactly one `Patient` and one `Doctor` instance. It contains specific fields for tracking `date` and `time` to model real-world clinical entries.
+> *(Point to `Appointment` connections)* An `Appointment` entity maintains a clear **Composition** relationship with exactly one `Patient` and one `Doctor` instance. It contains independent tracking variables for `date` and `time` to accurately map clinical scheduling realities.
 > 
-> *Visual Cue: Hover mouse around the Service blocks and SystemController*
+> *Visual Cue: Move mouse to highlight the `SystemController` block*
 > 
-> We strongly justify this structure through the **Facade Design Pattern** `[中文提示: 外观设计模式]`. Our Swing UI frames never communicate directly with domain models. Instead, they communicate exclusively through a single gateway class called `SystemController`. This controller acts as our system facade, delegating actions out to highly specialized services like `PatientService` or `AppointmentService`. This keeps our system decoupled and easily expandable.
+> We strongly justify this layered structure through the **Facade Design Pattern** `[中文提示: 外观设计模式]`. Our view frames are completely decoupled from backend data mutations. They talk exclusively to a unified interface layer called `SystemController`. The controller acts as our system facade, safe-delegating user actions out to independent service managers like `PatientService` or `AppointmentService`.
 > 
-> Next, let's look at Section 3 to see our Sequence Diagrams."
+> Now, let's transition smoothly into Section 3 to evaluate our dynamic execution paths via Sequence Diagrams."
 
 ---
 
 ### 🎬 Section 3: Sequence Diagrams (4:00 - 7:00)
-**[Screen Action]:** *Switch on-screen view to your Login Sequence Diagram. Trace line movements horizontally from left to right as you present.*
-
-**Presenter 2 (Wing Kit):**
-> "In Section 3, we analyze how our decoupled objects interact dynamically at runtime `[中文提示: 对象的动态交互流向]`. 
-> 
-> Let's look at the **Login Process workflow** `[中文提示: 登录流程]`. When a user types their details inside our `LoginFrame`, the view triggers the operation by passing arguments into `SystemController.login()`. The controller delegates authentication to our `AuthenticationService`. The service loops through the user collection loaded from our central `HospitalRepository`. If the username and password match perfectly, the controller safely opens the role-based dashboard.
-> 
-> *Visual Cue: Switch image file to the Patient Management Sequence Diagram*
-> 
-> Next is our **Record Management flow**, specifically adding a new patient `[中文提示: 患者信息维护流程]`. When a receptionist submits registration fields, the request travels through `SystemController` into `PatientService`. The service calls `HospitalRepository.addPatient()`, which encapsulates an auto-increment identity counter to generate a distinct patient ID. The newly created `Patient` reference is returned back up to refresh our UI data table.
-> 
-> Presenter 4 will now take over to present our critical appointment scheduling validation."
+**[Screen Action]:** *Switch on-screen view to `uml/sequence-login.puml`. Trace line movements horizontally from left to right as you present the message passes.*
 
 **Presenter 4:**
-> "Thank you, Wing Kit. Let's move to our most critical validation pathway: the **Appointment Booking Flow** `[中文提示: 预约挂号流程]`.
+> "In Section 3, we analyze how our decoupled objects interact dynamically at runtime.
 > 
-> *Visual Cue: Open the Appointment Booking Sequence Diagram and point to the alt conditional block*
+> Let's first examine the **Login Workflow** `[中文提示: 登录流程]`. When a user submits their credentials from our `LoginFrame`, the view captures the input and invokes `SystemController.login()`. The controller forwards the request to the `AuthenticationService`, which queries our data access layer, the `HospitalRepository`. If the records match, the backend returns a successful state, prompting the controller to securely launch the correct dashboard view.
 > 
-> When a booking request is made, the `AppointmentService` fetches all current bookings from the repository to verify scheduling conflicts. As explicitly mapped inside this conditional **Alternative Block** `[中文提示: 选择分支组合碎片]`, if a duplicate slot matches the same doctor, date, and time, the execution branch throws a `DuplicateAppointmentException` back to the view. This completely stops the transaction and prompts an alert on the screen. Only when the slot is confirmed available does the system save the record.
+> *Visual Cue: Switch image file to `uml/sequence-add-patient.puml`*
 > 
-> Now, for Section 4, Presenter 3 will guide you through a complete, live demonstration of our working system."
+> Next is our **Record Management flow**, specifically focusing on adding a patient `[中文提示: 患者信息维护流程]`. When the receptionist hits the submit form, the payload passes through the controller straight into our business layer, `PatientService`. The service calls `HospitalRepository.addPatient()`, which runs an internal auto-increment identity counter to issue a unique patient ID. The saved object reference flows back up to update our visual tables automatically.
+> 
+> *Visual Cue: Open `uml/sequence-book-appointment.puml` and highlight the alt combined fragment block*
+> 
+> Finally, let's look at our most critical sequence: the **Appointment Booking Flow** `[中文提示: 预约挂号冲突校验流程]`. Before confirming a transaction, the `AppointmentService` pulls active records from the repository to perform state validation. As shown inside this conditional **Alternative Block** `[中文提示: 选择分支组合碎片]`, if the targeted doctor already has an active slot matching the requested date and time, our backend catches the conflict and throws a custom `DuplicateAppointmentException`. This instantly stops execution, protects database integrity, and pushes an error code to the UI.
+> 
+> Now, for Section 4, Presenter 3 will take you through a full live demonstration of our running application."
 
 ---
 
 ### 🎬 Section 4: System Demonstration (7:00 - 13:00)
-**[Screen Action]:** *Launch the live Java Swing application. Presenter 3 takes full control of the screen. Keep the app centered and clearly visible, performing actions smoothly as you speak.*
+**[Screen Action]:** *Launch the live Java Swing application. Presenter 3 takes full control of the interaction, performing actions cleanly and matching the pace of the narration.*
 
 **Presenter 3 (Solo Demo):**
-> "Thank you, Presenter 4. Now, I will present a complete live demonstration of our working Hospital Management System, guiding you step-by-step through our core workflows.
+> "Thank you, Presenter 4. Now, I will present a complete live demonstration of our working Hospital Management System, guiding you directly through our core user workflows.
 > 
 > **Step 1: Secure Role-Based Login `[中文提示: 角色登录与权限控制]`**
-> First, let's look at authentication. I will type the credentials `reception` and `reception123` to log in as a receptionist. Notice that the dashboard instantly displays a custom welcome message showing our role. If we click on the Doctors management tab, you will notice that all input fields and action buttons are greyed out. This proves our role-based authorization works perfectly: receptionists only have read-only permissions here.
+> Let's start with secure authentication. I will type the credentials `reception` and `reception123` to log in as a receptionist. The system loads our role dashboard. If I click on the Doctors tab, you will notice that all management inputs and action buttons are disabled. This proves our role-based security works: receptionists only have read-only access here.
 > 
-> Let's log out, and log back in using our Admin account: `admin` and `admin123`. As an administrator, our dashboard completely unlocks full management controls across all modules.
+> Let's sign out and log back in using our Admin credentials: `admin` and `admin123`. As an administrator, our dashboard completely unlocks full management controls across all windows.
 > 
 > **Step 2: Add Patient Record with Input Validation `[中文提示: 添加患者与输入校验]`**
-> Let's move to the Patients tab to demonstrate our system's data defense. If I try to input characters like 'abc' inside the Age field and click add, our controller catches the error and blocks the transaction, showing a clear warning popup: 'Patient age must be a valid positive integer'. 
+> Let's move to the Patients tab to test our input filters. If I intentionally input characters like 'abc' inside our Age field and click add, our controller intercepts the bad data and blocks the transaction, showing a popup warning: 'Patient age must be a valid positive integer'. 
 > 
-> Now, let's enter valid information: Name as 'Alice Green', Age as '30', Gender as 'Female', and click **Add Patient**. The table instantly updates with our new patient entry and displays their auto-generated ID.
+> Now, let's enter valid data: Name as 'Alice Green', Age as '30', Gender as 'Female', and click **Add Patient**. The table updates instantly with our new entry and its unique generated tracking ID.
 > 
-> **Step 3: Conflict-Free Appointment Booking `[中文提示: 预约挂号与冲突拦截]`**
-> Next, let's switch over to the Appointments tab to schedule a consultation. The patient dropdown automatically displays our newly registered patient, 'Alice Green', and our available doctor, 'Dr. Kumar'. Let's book an appointment for date '2026-06-20' at time '09:00' and click **Book Appointment**. The booking completes successfully and appears in the schedule grid.
+> **Step 3: Conflict-Free Appointment Booking `[中文提示: 冲突拦截演示]`**
+> Let's switch over to the Appointments tab to schedule a clinical visit. The patient dropdown automatically reflects our new patient, 'Alice Green', and our available doctor, 'Dr. Kumar'. Let's pick date '2026-06-20' at time '09:00' and click **Book Appointment**. The record saves smoothly.
 > 
-> Now, let's test our conflict interceptor. I will try to book the exact same doctor at the exact same date and time slot again. When I click the button, our backend validation catches the conflict, blocks the double-booking, and displays a clear warning popup: 'Doctor already has an appointment at this date and time'. This proves our system successfully protects clinical schedules.
+> Now, let's trigger our scheduling safety logic. I will attempt to book an appointment with the exact same doctor at the exact same date and time slot again. When I click the button, our backend validation catches the duplicate state, blocks the double-booking, and pops up our caught exception message: 'Doctor already has an appointment at this date and time'. 
 > 
-> **Step 4: View Aggregated Report `[中文提示: 查看统计报表]`**
-> Finally, let's move to our Reports tab and click **Generate Report**. The system gathers data directly from our repository layer and displays live hospital summaries, including our total patient count, total active appointments, and organized daily schedules.
+> **Step 4: View Aggregated Report `[中文提示: 实时统计报表]`**
+> Finally, let's click the Reports tab and select **Generate Report**. The application aggregates raw system data in real-time, displaying total registered patients, total scheduled sessions, and complete summaries of active doctor workloads.
 > 
-> Now, Presenter 4 will present our final section: Section 5 for the Code Explanation."
+> Now, our Lead Software Engineer, Wing Kit, will guide you through Section 5 to explain our core code implementation."
 
 ---
 
 ### 🎬 Section 5: Code Explanation (13:00 - 15:00)
-**[Screen Action]:** *Open your code editor. Bring up the backend source files and highlight key class lines using your cursor as they are mentioned.*
+**[Screen Action]:** *Wing Kit shares his code editor view, explicitly highlighting code lines, keywords, and class properties as he reviews them.*
 
-**Presenter 4:**
-> "To wrap up our presentation, we will review how our source code implements core Object-Oriented Programming principles.
+**Presenter 2 (Wing Kit - Code Only):**
+> "Thank you, Presenter 3. To conclude our presentation, I will explain how our underlying backend source code maps out core Object-Oriented Programming principles `[中文提示: 源码层面的面向对象原则落地讲解]`.
 > 
 > *Visual Cue: Open `hms/model/User.java` in the editor*
 > 
-> **1. Abstraction and Inheritance `[中文提示: 抽象与继承]`:**
-> Look at our `User` class definition. It is declared as an `abstract class`. It defines our structural blueprint while protecting constructor access via the `protected` modifier. Subclasses like `AdminUser.java` or `DoctorUser.java` extend this base structure, showcasing clean Inheritance.
+> **1. Abstraction and Inheritance `[中文提示: 抽象与继承的源码表现]`:**
+> Here is our base domain model class, `User.java`. As you can see, it is explicitly declared with the `abstract` modifier `[中文提示: 抽象类关键字]`. This guarantees that it cannot be initialized directly. Our core sub-classes, such as `AdminUser.java` and `DoctorUser.java`, extend this component, achieving solid inheritance and removing code duplication.
 > 
 > *Visual Cue: Open `hms/model/Patient.java` in the editor*
 > 
-> **2. Encapsulation and Data Defense `[中文提示: 封装与数据防御]`:**
-> Inside our `Patient` model class, all core variables like `name`, `age`, and `gender` are strictly declared as `private` fields. Data can only be read through explicit getters. We also implemented data validation directly inside our setters to block invalid formatting or negative numbers from corrupting our database.
+> **2. Encapsulation and Setter Defense `[中文提示: 封装与 setter 数据防御]`:**
+> Looking at our `Patient` model file, we practice strict **Encapsulation** `[中文提示: 封装]`. All operational field variables like `name` and `age` are declared as `private`. They are accessed only through clean, public getters. Furthermore, we built validation handling directly into our setters, running automated constraints to prevent invalid strings or negative values from corrupting our system state.
 > 
 > *Visual Cue: Open `hms/service/AppointmentService.java`*
 > 
-> **3. Business Layer Rationale `[中文提示: 业务层架构合理性]`:**
-> Finally, our `AppointmentService` coordinates our core scheduling constraints. It completely encapsulates conflict checking and exception handling, ensuring that our core rules are protected in the business service layer rather than relying on UI controls. This decoupled framework ensures that our system is highly maintainable, scalable, and easy to extend.
+> **3. Decoupled Business Rationale `[中文提示: 业务层逻辑隔离合理性]`:**
+> Finally, look at our `AppointmentService.java`. This is where our scheduling constraint logic is safely isolated. By trapping duplication conflicts and evaluating business rules directly inside this independent service layer rather than relying on GUI field views, we keep our system highly maintainable, clean, and safe from runtime state corruption.
 > 
-> This marks the end of our presentation. Thank you very much for your time!"
+> This architecture ensures that our Hospital Management framework remains fully future-proof and ready for secondary module expansions. 
+> 
+> That brings us to the conclusion of our presentation. Thank you very much for your time and attention!"
