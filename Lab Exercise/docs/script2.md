@@ -12,11 +12,11 @@ Clear, non-complex English phrasing is paired with Chinese contextual notes (`[�
 
 | Rubric Section | Presentation Topic | Target Timing | Primary Speaker |
 | :--- | :--- | :--- | :--- |
-| **Section 1** | **Introduction & System Overview** | 0:00 - 1:00 (1 min) | Presenter 1 |
+| **Section 1** | **Introduction & System Overview** | 0:00 - 1:00 (1 min) | **Presenter 2 (Wing Kit)** |
 | **Section 2** | **Class Diagram Design & Rationale** | 1:00 - 4:00 (3 mins) | Presenter 1 & Presenter 4 |
 | **Section 3** | **Sequence Diagrams Workflow Analysis** | 4:00 - 7:00 (3 mins) | Presenter 4 |
 | **Section 4** | **Live System Functional Demonstration** | 7:00 - 13:00 (6 mins) | Presenter 3 (Solo Demo Friend) |
-| **Section 5** | **Code Architecture & OOP Implementation** | 13:00 - 15:00 (2 mins) | **Presenter 2 (Wing Kit - Code Only)** |
+| **Section 5** | **Code Architecture & OOP Implementation** | 13:00 - 15:00 (2 mins) | **Presenter 2 (Wing Kit)** |
 
 ---
 
@@ -25,8 +25,8 @@ Clear, non-complex English phrasing is paired with Chinese contextual notes (`[�
 ### 🎬 Section 1: Introduction (0:00 - 1:00)
 **[Screen Action]:** *Show Title Slide containing "Hospital Management System (HMS) MVP", Group Section, and all 4 Student Names/IDs clearly listed.*
 
-**Presenter 1:**
-> "Hello everyone, and welcome to our project presentation. Our team has designed and implemented a standalone **Hospital Management System MVP** using Java Swing templates. Before we begin, let me introduce our group members:
+**Presenter 2 (Wing Kit):**
+> "Hello everyone, and welcome to our project presentation. I am Wing Kit, the Lead Software Engineer and Architect for this project. I will be guiding you through our system overview and later explain our backend code implementation. Before we begin, let me introduce our group members:
 > * **Presenter 1:** [Name & ID] - Project Coordinator
 > * **Presenter 2 (Wing Kit):** See Wing Kit [& ID] - Lead Software Engineer & Architect
 > * **Presenter 3:** [Name & ID] - Live System Presenter
@@ -123,18 +123,15 @@ Clear, non-complex English phrasing is paired with Chinese contextual notes (`[�
 > 
 > *Visual Cue: Open `hms/model/User.java` in the editor*
 > 
-> **1. Abstraction and Inheritance `[中文提示: 抽象与继承的源码表现]`:**
-> Here is our base domain model class, `User.java`. As you can see, it is explicitly declared with the `abstract` modifier `[中文提示: 抽象类关键字]`. This guarantees that it cannot be initialized directly. Our core sub-classes, such as `AdminUser.java` and `DoctorUser.java`, extend this component, achieving solid inheritance and removing code duplication.
+> Starting with abstraction and inheritance `[中文提示: 抽象与继承的源码表现]`, here is our base domain model class, `User.java`. As you can see, it is explicitly declared with the `abstract` modifier `[中文提示: 抽象类关键字]`. This guarantees that it cannot be initialized directly, while concrete subclasses like `DoctorUser.java` and `AdminUser.java` extend it to share baseline attributes and implement their own version of the abstract home message method.
 > 
 > *Visual Cue: Open `hms/model/Patient.java` in the editor*
 > 
-> **2. Encapsulation and Setter Defense `[中文提示: 封装与 setter 数据防御]`:**
-> Looking at our `Patient` model file, we practice strict **Encapsulation** `[中文提示: 封装]`. All operational field variables like `name` and `age` are declared as `private`. They are accessed only through clean, public getters. Furthermore, we built validation handling directly into our setters, running automated constraints to prevent invalid strings or negative values from corrupting our system state.
+> Next, if we look at our `Patient` model file, we practice strict encapsulation `[中文提示: 封装与数据防御]`. All operational fields like `name` and `age` are declared as `private` and accessed only through clean public getters. To protect our object state, any modifications must pass through a unified update method that runs validation logic to intercept empty values or negative ages before they can save.
 > 
 > *Visual Cue: Open `hms/service/AppointmentService.java`*
 > 
-> **3. Decoupled Business Rationale `[中文提示: 业务层逻辑隔离合理性]`:**
-> Finally, look at our `AppointmentService.java`. This is where our scheduling constraint logic is safely isolated. By trapping duplication conflicts and evaluating business rules directly inside this independent service layer rather than relying on GUI field views, we keep our system highly maintainable, clean, and safe from runtime state corruption.
+> Finally, our business rules are decoupled from the user interface and isolated in service components like `AppointmentService.java` `[中文提示: 业务逻辑与界面解耦]`. For example, our scheduling safety checks are executed at the service layer, where we query the repository to ensure no duplicate slot allocations occur, preventing double-bookings. By separating concerns this way, we keep our codebase highly maintainable, clean, and safe from runtime state corruption.
 > 
 > This architecture ensures that our Hospital Management framework remains fully future-proof and ready for secondary module expansions. 
 > 
