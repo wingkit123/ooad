@@ -35,7 +35,8 @@ class Doctor {
   - id: int
   - name: String
   - specialization: String
-  + update(name: String, specialization: String): void
+  - status: String
+  + update(name: String, specialization: String, status: String): void
 }
 
 class Appointment {
@@ -44,6 +45,7 @@ class Appointment {
   - doctor: Doctor
   - date: LocalDate
   - time: LocalTime
+  + update(patient: Patient, doctor: Doctor, date: LocalDate, time: LocalTime): void
   + isSameDoctorSlot(doctorId: int, date: LocalDate, time: LocalTime): boolean
   + toScheduleLine(): String
 }
@@ -52,8 +54,13 @@ class SystemController {
   + login(username: String, password: String): User
   + addPatient(name: String, age: int, gender: String, medicalHistory: String): Patient
   + updatePatient(patientId: int, name: String, age: int, gender: String, medicalHistory: String): void
+  + deletePatient(patientId: int): void
   + addDoctor(name: String, specialization: String): Doctor
+  + updateDoctor(doctorId: int, name: String, specialization: String, status: String): void
+  + deleteDoctor(doctorId: int): void
   + bookAppointment(patientId: int, doctorId: int, date: LocalDate, time: LocalTime): Appointment
+  + updateAppointment(appointmentId: int, patientId: int, doctorId: int, date: LocalDate, time: LocalTime): void
+  + deleteAppointment(appointmentId: int): void
   + generateReport(): ReportSummary
 }
 
@@ -62,6 +69,9 @@ class HospitalRepository {
   - patients: List<Patient>
   - doctors: List<Doctor>
   - appointments: List<Appointment>
+  + deletePatient(id: int): void
+  + deleteDoctor(id: int): void
+  + deleteAppointment(id: int): void
 }
 
 class AuthenticationService

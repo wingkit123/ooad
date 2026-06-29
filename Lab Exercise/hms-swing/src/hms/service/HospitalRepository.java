@@ -63,6 +63,20 @@ public class HospitalRepository {
         return appointment;
     }
 
+    public void deleteAppointment(int id) {
+        appointments.removeIf(app -> app.getId() == id);
+    }
+
+    public void deletePatient(int id) {
+        patients.removeIf(p -> p.getId() == id);
+        appointments.removeIf(app -> app.getPatient().getId() == id);
+    }
+
+    public void deleteDoctor(int id) {
+        doctors.removeIf(d -> d.getId() == id);
+        appointments.removeIf(app -> app.getDoctor().getId() == id);
+    }
+
     public List<User> getUsers() {
         return Collections.unmodifiableList(users);
     }

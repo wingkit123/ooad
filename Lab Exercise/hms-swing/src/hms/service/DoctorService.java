@@ -22,7 +22,16 @@ public class DoctorService {
                 .orElseThrow(() -> new IllegalArgumentException("Doctor not found."));
     }
 
+    public void updateDoctor(int doctorId, String name, String specialization, String status) {
+        Doctor doctor = findDoctor(doctorId);
+        doctor.update(name, specialization, status);
+    }
+
     public List<Doctor> getDoctors() {
         return repository.getDoctors();
+    }
+
+    public void deleteDoctor(int doctorId) {
+        repository.deleteDoctor(doctorId);
     }
 }

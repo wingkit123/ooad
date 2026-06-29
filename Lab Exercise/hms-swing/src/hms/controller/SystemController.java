@@ -55,12 +55,32 @@ public class SystemController {
         return doctorService.addDoctor(name, specialization);
     }
 
+    public void updateDoctor(int doctorId, String name, String specialization, String status) {
+        doctorService.updateDoctor(doctorId, name, specialization, status);
+    }
+
     public List<Doctor> getDoctors() {
         return doctorService.getDoctors();
     }
 
     public Appointment bookAppointment(int patientId, int doctorId, LocalDate date, LocalTime time) {
         return appointmentService.bookAppointment(patientId, doctorId, date, time);
+    }
+
+    public void updateAppointment(int appointmentId, int patientId, int doctorId, LocalDate date, LocalTime time) {
+        appointmentService.updateAppointment(appointmentId, patientId, doctorId, date, time);
+    }
+
+    public void deleteAppointment(int appointmentId) {
+        appointmentService.deleteAppointment(appointmentId);
+    }
+
+    public void deletePatient(int patientId) {
+        patientService.deletePatient(patientId);
+    }
+
+    public void deleteDoctor(int doctorId) {
+        doctorService.deleteDoctor(doctorId);
     }
 
     public List<Appointment> getAppointments() {

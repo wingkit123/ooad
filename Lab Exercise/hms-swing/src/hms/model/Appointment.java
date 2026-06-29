@@ -8,12 +8,17 @@ public class Appointment {
     private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm");
 
     private final int id;
-    private final Patient patient;
-    private final Doctor doctor;
-    private final LocalDate date;
-    private final LocalTime time;
+    private Patient patient;
+    private Doctor doctor;
+    private LocalDate date;
+    private LocalTime time;
 
     public Appointment(int id, Patient patient, Doctor doctor, LocalDate date, LocalTime time) {
+        this.id = id;
+        update(patient, doctor, date, time);
+    }
+
+    public void update(Patient patient, Doctor doctor, LocalDate date, LocalTime time) {
         if (patient == null) {
             throw new IllegalArgumentException("Patient is required.");
         }
@@ -26,7 +31,6 @@ public class Appointment {
         if (time == null) {
             throw new IllegalArgumentException("Time is required.");
         }
-        this.id = id;
         this.patient = patient;
         this.doctor = doctor;
         this.date = date;

@@ -29,4 +29,8 @@ public class PatientService {
     public List<Patient> getPatients() {
         return repository.getPatients();
     }
+
+    public void deletePatient(int patientId) {
+        repository.deletePatient(patientId);
+    }
 }

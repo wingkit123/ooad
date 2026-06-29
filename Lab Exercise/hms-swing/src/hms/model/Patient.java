@@ -16,11 +16,17 @@ public class Patient {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Patient name is required.");
         }
+        if (name.matches(".*\\d.*")) {
+            throw new IllegalArgumentException("Patient name cannot contain numbers.");
+        }
         if (age <= 0) {
             throw new IllegalArgumentException("Patient age must be greater than zero.");
         }
         if (gender == null || gender.isBlank()) {
             throw new IllegalArgumentException("Patient gender is required.");
+        }
+        if (gender.matches(".*\\d.*")) {
+            throw new IllegalArgumentException("Patient gender cannot contain numbers.");
         }
         this.name = name.trim();
         this.age = age;
