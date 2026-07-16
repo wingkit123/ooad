@@ -10,6 +10,15 @@ import model.Equipment;
 import model.RentalRecord;
 import model.User;
 
+/**
+ * 1. Diagram (Class & Architecture)
+ * - Class Role: Part of the Subsystem layer. Manages RentalRecord transactions.
+ * - Relationships: Direct association with User, Equipment, and RentalRecord.
+ * 
+ * 2. System (System Flow)
+ * - State: Tracks active and historical rental logs.
+ * - Persistence: Implements Serializable to save all transaction histories to system_data.dat.
+ */
 public class RentalManager implements Serializable {
     private static final long serialVersionUID = 1L;
     private List<RentalRecord> records;

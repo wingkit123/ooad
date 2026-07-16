@@ -4,6 +4,15 @@ import model.Bill;
 import model.Equipment;
 import model.User;
 
+/**
+ * 1. Diagram (Class & Architecture)
+ * - Class Role: Stateless subsystem manager. Computes rental rates, discounts, and penalties.
+ * - Relationships: Works with User, Equipment, and returns a Bill object.
+ * 
+ * 2. System (System Flow)
+ * - State: Stateless calculation helper.
+ * - Logic: Applies user discounts (20% Staff, 10% Final Year Student) and handles late return penalties.
+ */
 public class BillingManager {
     public Bill calculateBill(User user, Equipment equipment, int actualDurationDays, int plannedDurationDays, boolean isDamaged, double depositPaid) {
         // 1. Calculate Base Fee (delegated to polymorphic equipment class)

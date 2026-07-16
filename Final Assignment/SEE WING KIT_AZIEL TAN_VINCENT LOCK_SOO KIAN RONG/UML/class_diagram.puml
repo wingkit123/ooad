@@ -4,28 +4,55 @@ skinparam classAttributeIconSize 0
 package "gui" {
     class LoginFrame {
         - facade: RentalSystemFacade
-        - userIdField: JTextField
-        - userNameField: JTextField
-        - userTypeCombo: JComboBox<String>
+        - cardContainer: JPanel
+        - cardLayout: CardLayout
+        - loginIdField: JTextField
+        - loginNameField: JTextField
+        - regIdField: JTextField
+        - regNameField: JTextField
+        - regTypeCombo: JComboBox<String>
         - initializeUI(): void
+        - createLoginPanel(): JPanel
+        - createRegisterPanel(): JPanel
+        - createPrimaryButton(text: String): JButton
         - handleUserLogin(): void
+        - handleUserRegister(): void
         - showAdminLoginDialog(): void
     }
 
     class RentalAppGUI {
         - facade: RentalSystemFacade
         - isAdmin: boolean
+        - adminInventoryTable: JTable
+        - adminInventoryModel: DefaultTableModel
+        - addIdField: JTextField
+        - addNameField: JTextField
+        - addRateField: JTextField
+        - addCategoryCombo: JComboBox<String>
+        - updateNameField: JTextField
+        - updateRateField: JTextField
+        - updateStatusCombo: JComboBox<String>
+        - adminRentalsTable: JTable
+        - adminRentalsModel: DefaultTableModel
+        - userCatalogTable: JTable
+        - userCatalogModel: DefaultTableModel
+        - rentDurationField: JTextField
+        - cartSummaryLabel: JLabel
+        - userRentalsTable: JTable
+        - userRentalsModel: DefaultTableModel
+        - returnDaysField: JTextField
+        - damageCheck: JCheckBox
+        - receiptArea: JTextArea
         - initializeUI(): void
         - handleLogout(): void
-        - refreshAllData(): void
-        ' Admin UI actions
+        - handleInventorySelect(): void
         - handleAddEquipment(): void
         - handleUpdateEquipment(): void
         - handleRemoveEquipment(): void
-        ' User UI actions
         - updateCartSummary(): void
         - handleCheckout(): void
         - handleReturn(): void
+        - refreshAllData(): void
     }
 }
 
@@ -39,6 +66,7 @@ package "facade" {
         - isAdminSession: boolean
         + adminLogin(id: String, password: String): boolean
         + userLogin(id: String, name: String, userTypeStr: String): String
+        + isUserRegistered(id: String): boolean
         + logout(): void
         + getCurrentUser(): User
         + addEquipment(id: String, name: String, category: String, rate: double): void
@@ -58,6 +86,7 @@ package "manager" {
     class EquipmentManager {
         - inventory: List<Equipment>
         + addEquipment(equipment: Equipment): void
+        + removeEquipment(equipment: Equipment): void
         + getAllEquipment(): List<Equipment>
         + getAvailableEquipment(): List<Equipment>
         + findEquipmentById(id: String): Optional<Equipment>
@@ -147,8 +176,11 @@ package "model" {
         + getUser(): User
         + getEquipment(): Equipment
         + getPlannedDurationDays(): int
+        + getRentDate(): LocalDate
+        + getReturnDate(): LocalDate
         + getStatus(): RentalStatus
         + getDepositPaid(): double
+        + getBill(): Bill
         + setReturnDate(returnDate: LocalDate): void
         + setStatus(status: RentalStatus): void
         + setBill(bill: Bill): void
@@ -166,6 +198,11 @@ package "model" {
         - depositPaid: double
         - totalCharges: double
         - netSettlement: double
+        - user: User
+        - equipment: Equipment
+        - actualDurationDays: int
+        - plannedDurationDays: int
+        - isDamaged: boolean
         + getBaseFee(): double
         + getDiscountAmount(): double
         + getPenaltyAmount(): double

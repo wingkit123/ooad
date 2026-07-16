@@ -32,20 +32,20 @@ All commands should be executed from the root repository directory.
 Compile and run the self-service kiosk GUI:
 ```powershell
 # Compile the application
-javac -d "Final Assignment/bin" -sourcepath "Final Assignment/src" "Final Assignment/src/Main.java"
+javac -d "bin" -sourcepath "src" "src/Main.java"
 
 # Launch the application
-java -cp "Final Assignment/bin" Main
+java -cp "bin" Main
 ```
 
 ### 2. Running the QA Test Suite
 Compile and run the automated matrix test runner:
 ```powershell
 # Compile the test runner
-javac -d "Final Assignment/bin" -sourcepath "Final Assignment/src" "Final Assignment/src/TestRunner.java"
+javac -d "bin" -sourcepath "src" "src/TestRunner.java"
 
 # Run tests
-java -cp "Final Assignment/bin" TestRunner
+java -cp "bin" TestRunner
 ```
 
 ---

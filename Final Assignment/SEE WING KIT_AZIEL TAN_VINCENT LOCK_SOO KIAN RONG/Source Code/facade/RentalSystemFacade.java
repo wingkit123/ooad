@@ -16,6 +16,16 @@ import model.MediaEquipment;
 import model.RentalRecord;
 import model.User;
 
+/**
+ * 1. Diagram (Class & Architecture)
+ * - Pattern: Facade Design Pattern. Acts as a unified, high-level interface.
+ * - Connections: Connects EquipmentManager, RentalManager, and BillingManager.
+ * - Why Facade?: Hides backend complexity. UI only needs to call facade.rentEquipmentList() instead of coordinating multiple managers.
+ * 
+ * 2. System (System Flow)
+ * - State: Manages system state during runtime (session management, currentUser, isAdminSession).
+ * - Persistence: Automatically loads/saves serialized data (system_data.dat).
+ */
 public class RentalSystemFacade {
     private EquipmentManager equipmentManager;
     private RentalManager rentalManager;
@@ -28,6 +38,12 @@ public class RentalSystemFacade {
 
     private static final String DATA_FILE = "system_data.dat";
 
+    /**
+     * (Code Explanation - Constructor & File I/O):
+     * Handles application startup and File I/O. Uses Java Object Serialization to read/write 
+     * lists of users, equipment, and rentals to a local file. Contains a test mode check 
+     * to avoid overwriting production data during unit tests.
+     */
     public RentalSystemFacade() {
         this.billingManager = new BillingManager();
         if (isTestMode()) {
@@ -106,6 +122,12 @@ public class RentalSystemFacade {
         return false;
     }
 
+    /**
+     * (Code Explanation - User Login):
+     * Validates user credentials. If user exists, verifies name. If not, dynamically 
+     * creates a new User object, parses their user type from a string into an Enum, 
+     * saves the data, and sets currentUser to start the session.
+     */
     public String userLogin(String id, String name, String userTypeStr) {
         if (id.trim().isEmpty() || name.trim().isEmpty()) {
             return "Error: User ID and Name cannot be empty.";
@@ -212,6 +234,13 @@ public class RentalSystemFacade {
 
     // --- Checkout & Return ---
 
+    /**
+     * (Code Explanation - Rent Equipment):
+     * Core checkout logic. Loops through requested equipment IDs, checks availability, 
+     * calculates base fee (using specific rate), applies polymorphism, applies business 
+     * rules for discounts (20% Staff, 10% Final Year Student), adds flat $50 deposit, 
+     * and creates the rental record.
+     */
     public String rentEquipmentList(List<String> equipmentIds, int durationDays) {
         if (currentUser == null) {
             return "Error: No user session active. Please log in.";
@@ -263,6 +292,12 @@ public class RentalSystemFacade {
         }
     }
 
+    /**
+     * (Code Explanation - Return Equipment):
+     * Handles returning items. Looks up the active rental record, passes data (duration, 
+     * damage, deposits) to BillingManager to calculate the final Bill, updates equipment 
+     * status back to AVAILABLE (or DAMAGED), and saves state.
+     */
     public String returnEquipment(String recordId, int actualDurationDays, boolean isDamaged) {
         if (actualDurationDays < 0) {
             return "Error: Actual duration cannot be negative.";
