@@ -25,6 +25,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * (Code Explanation - Presentation Layer / GUI):
+ * The Entry Point UI for the system. Connects ONLY to the RentalSystemFacade.
+ * Handles user input and displays visual components, but contains zero business logic.
+ * Demonstrates clean Separation of Concerns.
+ */
 public class LoginFrame extends JFrame {
     private RentalSystemFacade facade;
     

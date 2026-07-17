@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * (Code Explanation - Inheritance & Polymorphism):
+ * Subclass of Equipment. Demonstrates inheritance by extending the base class.
+ * Demonstrates polymorphism by overriding calculateBaseFee and calculatePenalty 
+ * to provide specific business rules (e.g., 2.0x late rate and $200 damage fee) for Media Equipment.
+ */
 public class MediaEquipment extends Equipment {
     private static final long serialVersionUID = 1L;
 

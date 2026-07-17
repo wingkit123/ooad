@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * (Code Explanation - Inheritance & Polymorphism):
+ * Subclass of Equipment. Demonstrates inheritance by extending the base class.
+ * Demonstrates polymorphism by overriding calculateBaseFee and calculatePenalty 
+ * to provide specific business rules (e.g., 2.5x late rate and $300 damage fee) for Laboratory Equipment.
+ */
 public class LaboratoryEquipment extends Equipment {
     private static final long serialVersionUID = 1L;
 

@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * (Code Explanation - Inheritance & Polymorphism):
+ * Subclass of Equipment. Demonstrates inheritance by extending the base class.
+ * Demonstrates polymorphism by overriding calculateBaseFee and calculatePenalty 
+ * to provide specific business rules (e.g., 1.5x late rate and $150 damage fee) for Electronics.
+ */
 public class Electronics extends Equipment {
     private static final long serialVersionUID = 1L;
 

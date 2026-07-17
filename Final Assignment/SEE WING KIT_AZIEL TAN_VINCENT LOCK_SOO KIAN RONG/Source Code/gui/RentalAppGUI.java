@@ -27,6 +27,12 @@ import javax.swing.table.DefaultTableModel;
 import model.Equipment;
 import model.RentalRecord;
 
+/**
+ * (Code Explanation - Presentation Layer / GUI):
+ * The Main Application GUI dashboard. Connects ONLY to the RentalSystemFacade.
+ * It renders different panels (Admin vs User) dynamically based on session data 
+ * passed from the Facade. Contains zero business logic or calculations.
+ */
 public class RentalAppGUI extends JFrame {
     private RentalSystemFacade facade;
     private boolean isAdmin;

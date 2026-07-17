@@ -2,6 +2,13 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ * (Code Explanation - Abstraction & Encapsulation):
+ * Abstract base class that defines the blueprint for all equipment types.
+ * Encapsulates core attributes (ID, name, status, rate) using private modifiers 
+ * and provides public getters/setters. Declares abstract methods for pricing logic,
+ * forcing subclasses to implement their own specific business rules.
+ */
 public abstract class Equipment implements Serializable {
     private static final long serialVersionUID = 1L;
 

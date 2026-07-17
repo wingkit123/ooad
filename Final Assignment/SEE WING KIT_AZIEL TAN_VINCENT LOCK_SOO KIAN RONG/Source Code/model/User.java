@@ -2,6 +2,12 @@ package model;
 
 import java.io.Serializable;
 
+/**
+ * (Code Explanation - Data Model & State):
+ * Plain Old Java Object (POJO) representing a system user. 
+ * Implements Serializable for saving state. Contains an inner Enum (UserType) 
+ * used extensively by BillingManager to calculate role-based discounts.
+ */
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 

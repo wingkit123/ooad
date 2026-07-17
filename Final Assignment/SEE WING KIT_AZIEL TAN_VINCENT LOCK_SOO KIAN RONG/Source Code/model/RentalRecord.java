@@ -3,6 +3,12 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * (Code Explanation - Data Model & Aggregation):
+ * Represents a single transaction. Acts as a junction table in a database, connecting 
+ * a User to a piece of Equipment. Tracks dates and statuses, and eventually 
+ * holds the generated Bill.
+ */
 public class RentalRecord implements Serializable {
     private static final long serialVersionUID = 1L;
 

@@ -14,6 +14,12 @@ import model.User;
  * - Logic: Applies user discounts (20% Staff, 10% Final Year Student) and handles late return penalties.
  */
 public class BillingManager {
+    /**
+     * (Code Explanation - Calculate Bill):
+     * The central pricing engine. It receives the raw parameters from the Facade, 
+     * delegates base fee and penalty calculations to the polymorphic Equipment subclasses,
+     * applies the business logic for User discounts, and generates the final Bill object.
+     */
     public Bill calculateBill(User user, Equipment equipment, int actualDurationDays, int plannedDurationDays, boolean isDamaged, double depositPaid) {
         // 1. Calculate Base Fee (delegated to polymorphic equipment class)
         double baseFee = equipment.calculateBaseFee(plannedDurationDays);
