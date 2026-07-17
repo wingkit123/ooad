@@ -62,6 +62,12 @@ public class RentalSystemFacade {
         this.isAdminSession = false;
     }
 
+    /**
+     * (Code Explanation - Test Mode Check):
+     * Dynamically inspects the current thread's stack trace to determine if the 
+     * application is being executed by the automated TestRunner. If true, it bypasses
+     * file I/O to prevent tests from overwriting live production data.
+     */
     private boolean isTestMode() {
         for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
             if (element.getClassName().equals("TestRunner")) {
@@ -78,6 +84,12 @@ public class RentalSystemFacade {
         seedInitialData();
     }
 
+    /**
+     * (Code Explanation - Data Persistence / Serialization):
+     * The core persistence engine. Opens an ObjectOutputStream linked to system_data.dat.
+     * It serializes the lists of users, equipment inventory, and rental records.
+     * This ensures the application state is maintained across system reboots.
+     */
     private void saveDataToFile() {
         if (isTestMode()) {
             return;
@@ -92,6 +104,12 @@ public class RentalSystemFacade {
         }
     }
 
+    /**
+     * (Code Explanation - Data Loading / Deserialization):
+     * Called during startup. Opens an ObjectInputStream to read the binary file.
+     * It securely casts and injects the deserialized objects back into the Facade's
+     * state, fully restoring the application exactly as it was when last closed.
+     */
     @SuppressWarnings("unchecked")
     private void loadDataFromFile() throws java.io.IOException, ClassNotFoundException {
         try (java.io.ObjectInputStream ois = new java.io.ObjectInputStream(new java.io.FileInputStream(DATA_FILE))) {
@@ -113,6 +131,12 @@ public class RentalSystemFacade {
 
     // --- Authentication ---
 
+    /**
+     * (Code Explanation - Admin Authentication):
+     * Simple hardcoded verification for the admin panel access. 
+     * In a future update (e.g., Supabase migration), this would be replaced with 
+     * a secure hashing verification or OAuth token check.
+     */
     public boolean adminLogin(String id, String password) {
         if ("admin123".equals(id) && "admin123".equals(password)) {
             isAdminSession = true;
@@ -179,6 +203,12 @@ public class RentalSystemFacade {
 
     // --- Equipment Operations ---
 
+    /**
+     * (Code Explanation - Add Equipment via Factory logic):
+     * Receives raw string data from the GUI and uses a switch statement (acting like 
+     * a simple Factory method) to instantiate the correct Equipment subclass 
+     * (Electronics, Media, Laboratory). This is an example of applying polymorphism.
+     */
     public void addEquipment(String id, String name, String category, double rate) {
         Equipment eq;
         switch (category.toLowerCase()) {

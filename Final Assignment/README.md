@@ -32,7 +32,7 @@ All commands should be executed from the root repository directory.
 Compile and run the self-service kiosk GUI:
 ```powershell
 # Compile the application
-javac -d "bin" -sourcepath "src" "src/Main.java"
+javac -d "bin" -sourcepath "SEE WING KIT_AZIEL TAN_VINCENT LOCK_SOO KIAN RONG/Source Code" "SEE WING KIT_AZIEL TAN_VINCENT LOCK_SOO KIAN RONG/Source Code/Main.java"
 
 # Launch the application
 java -cp "bin" Main
@@ -42,7 +42,7 @@ java -cp "bin" Main
 Compile and run the automated matrix test runner:
 ```powershell
 # Compile the test runner
-javac -d "bin" -sourcepath "src" "src/TestRunner.java"
+javac -d "bin" -sourcepath "SEE WING KIT_AZIEL TAN_VINCENT LOCK_SOO KIAN RONG/Source Code" "SEE WING KIT_AZIEL TAN_VINCENT LOCK_SOO KIAN RONG/Source Code/TestRunner.java"
 
 # Run tests
 java -cp "bin" TestRunner
