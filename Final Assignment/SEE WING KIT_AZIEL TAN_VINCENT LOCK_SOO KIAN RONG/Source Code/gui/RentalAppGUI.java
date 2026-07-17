@@ -136,6 +136,9 @@ public class RentalAppGUI extends JFrame {
             public boolean isCellEditable(int r, int c) { return false; }
         };
         adminInventoryTable = new JTable(adminInventoryModel);
+        adminInventoryTable.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        adminInventoryTable.setRowHeight(25);
+        adminInventoryTable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
         adminInventoryTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         adminInventoryTable.getSelectionModel().addListSelectionListener(e -> handleInventorySelect());
         panel.add(new JScrollPane(adminInventoryTable), BorderLayout.CENTER);
@@ -220,6 +223,9 @@ public class RentalAppGUI extends JFrame {
             public boolean isCellEditable(int r, int c) { return false; }
         };
         adminRentalsTable = new JTable(adminRentalsModel);
+        adminRentalsTable.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        adminRentalsTable.setRowHeight(25);
+        adminRentalsTable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
         panel.add(new JScrollPane(adminRentalsTable), BorderLayout.CENTER);
         
         return panel;
@@ -246,10 +252,15 @@ public class RentalAppGUI extends JFrame {
         };
         userCatalogModel.addTableModelListener(e -> updateCartSummary());
         userCatalogTable = new JTable(userCatalogModel);
+        userCatalogTable.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        userCatalogTable.setRowHeight(25);
+        userCatalogTable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
         userCatalogTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
         JPanel leftPanel = new JPanel(new BorderLayout(5, 5));
-        leftPanel.add(new JLabel("Select items to rent using checkboxes:"), BorderLayout.NORTH);
+        JLabel selectLabel = new JLabel("Select items to rent using checkboxes:");
+        selectLabel.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        leftPanel.add(selectLabel, BorderLayout.NORTH);
         leftPanel.add(new JScrollPane(userCatalogTable), BorderLayout.CENTER);
         panel.add(leftPanel, BorderLayout.CENTER);
         
@@ -330,10 +341,15 @@ public class RentalAppGUI extends JFrame {
             public boolean isCellEditable(int r, int c) { return false; }
         };
         userRentalsTable = new JTable(userRentalsModel);
+        userRentalsTable.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+        userRentalsTable.setRowHeight(25);
+        userRentalsTable.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 15));
         userRentalsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
         JPanel leftPanel = new JPanel(new BorderLayout(5, 5));
-        leftPanel.add(new JLabel("Your Active Rentals:"), BorderLayout.NORTH);
+        JLabel activeRentalsLabel = new JLabel("Your Active Rentals:");
+        activeRentalsLabel.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        leftPanel.add(activeRentalsLabel, BorderLayout.NORTH);
         leftPanel.add(new JScrollPane(userRentalsTable), BorderLayout.CENTER);
         
         // Return details
@@ -481,10 +497,10 @@ public class RentalAppGUI extends JFrame {
         double deposit = rowCount * 50.00;
         
         StringBuilder html = new StringBuilder();
-        html.append("<html><body style='font-family:\"Segoe UI\", sans-serif; font-size:12px; margin:5px; color:#333;'>");
+        html.append("<html><body style='font-family:\"Segoe UI\", sans-serif; font-size:16px; margin:5px; color:#333;'>");
         
         if (rowCount == 0) {
-            html.append("<p style='color:#777;'><i>No items selected. Select items using checkboxes.</i></p></body></html>");
+            html.append("<p style='color:#777; font-size:16px;'><i>No items selected. Select items using checkboxes.</i></p></body></html>");
             if (cartSummaryLabel != null) cartSummaryLabel.setText(html.toString());
             return;
         }
