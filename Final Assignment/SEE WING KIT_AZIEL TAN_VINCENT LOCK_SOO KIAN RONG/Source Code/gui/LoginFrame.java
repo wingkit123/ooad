@@ -79,7 +79,7 @@ public class LoginFrame extends JFrame {
 
         // Title at the top of the card
         JLabel logoLabel = new JLabel("CAMPUS SMART RENTAL KIOSK", SwingConstants.CENTER);
-        logoLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        logoLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
         logoLabel.setForeground(PRIMARY_BLUE);
         logoLabel.setBorder(new EmptyBorder(0, 0, 15, 0));
         card.add(logoLabel, BorderLayout.NORTH);
@@ -132,7 +132,7 @@ public class LoginFrame extends JFrame {
 
         // Title: Log In
         JLabel loginTitle = new JLabel("Log In");
-        loginTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        loginTitle.setFont(new Font("Segoe UI", Font.BOLD, 24));
         loginTitle.setForeground(TEXT_DARK);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -144,7 +144,7 @@ public class LoginFrame extends JFrame {
         gbc.gridy = 1;
         gbc.insets = new Insets(4, 0, 4, 0);
         loginIdField = new JTextField();
-        loginIdField.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        loginIdField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         loginIdField.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createLineBorder(new Color(200, 200, 200)), "User ID / Student ID"
         ));
@@ -153,7 +153,7 @@ public class LoginFrame extends JFrame {
         // Name Field
         gbc.gridy = 2;
         loginNameField = new JTextField();
-        loginNameField.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        loginNameField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         loginNameField.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createLineBorder(new Color(200, 200, 200)), "Your Full Name"
         ));
@@ -192,7 +192,7 @@ public class LoginFrame extends JFrame {
 
         // Title: Sign Up
         JLabel regTitle = new JLabel("Sign Up");
-        regTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        regTitle.setFont(new Font("Segoe UI", Font.BOLD, 24));
         regTitle.setForeground(TEXT_DARK);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -204,7 +204,7 @@ public class LoginFrame extends JFrame {
         gbc.gridy = 1;
         gbc.insets = new Insets(4, 0, 4, 0);
         regIdField = new JTextField();
-        regIdField.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        regIdField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         regIdField.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createLineBorder(new Color(200, 200, 200)), "Create User ID"
         ));
@@ -213,7 +213,7 @@ public class LoginFrame extends JFrame {
         // Name Field
         gbc.gridy = 2;
         regNameField = new JTextField();
-        regNameField.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        regNameField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         regNameField.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createLineBorder(new Color(200, 200, 200)), "Your Full Name"
         ));
@@ -227,7 +227,7 @@ public class LoginFrame extends JFrame {
             BorderFactory.createLineBorder(new Color(200, 200, 200)), "Role Category"
         ));
         regTypeCombo = new JComboBox<>(new String[]{"Student", "Staff", "Final Year Student"});
-        regTypeCombo.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        regTypeCombo.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         typePanel.add(regTypeCombo, BorderLayout.CENTER);
         panel.add(typePanel, gbc);
 
@@ -263,7 +263,7 @@ public class LoginFrame extends JFrame {
                 super.paintComponent(g);
             }
         };
-        btn.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        btn.setFont(new Font("Segoe UI", Font.BOLD, 18));
         btn.setBackground(new Color(25, 118, 210)); // #1976D2
         btn.setForeground(Color.WHITE);
         btn.setFocusPainted(false);
@@ -362,7 +362,7 @@ public class LoginFrame extends JFrame {
                 super.paintComponent(g);
             }
         };
-        verifyBtn.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        verifyBtn.setFont(new Font("Segoe UI", Font.BOLD, 14));
         verifyBtn.setBackground(PRIMARY_BLUE);
         verifyBtn.setForeground(Color.WHITE);
         verifyBtn.setContentAreaFilled(false);

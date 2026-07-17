@@ -76,7 +76,7 @@ public class RentalAppGUI extends JFrame {
         
         // Colors & Fonts
         Color headerColor = isAdmin ? new Color(192, 57, 43) : new Color(41, 128, 185); // Red for admin, Blue for user
-        Font titleFont = new Font("Segoe UI", Font.BOLD, 18);
+        Font titleFont = new Font("Segoe UI", Font.BOLD, 22);
         
         // Header Panel
         JPanel headerPanel = new JPanel(new BorderLayout());
@@ -101,7 +101,7 @@ public class RentalAppGUI extends JFrame {
         
         // Tabs
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tabbedPane.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         
         if (isAdmin) {
             tabbedPane.addTab("Manage Inventory", createAdminInventoryTab());
@@ -147,7 +147,7 @@ public class RentalAppGUI extends JFrame {
         JPanel addForm = new JPanel(new GridLayout(5, 2, 5, 5));
         addForm.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createEtchedBorder(), "Add Equipment", TitledBorder.LEFT, TitledBorder.TOP,
-            new Font("Segoe UI", Font.BOLD, 12)
+            new Font("Segoe UI", Font.BOLD, 15)
         ));
         
         addForm.add(new JLabel("ID:"));
@@ -175,7 +175,7 @@ public class RentalAppGUI extends JFrame {
         JPanel editForm = new JPanel(new GridLayout(5, 2, 5, 5));
         editForm.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createEtchedBorder(), "Edit Selected Equipment", TitledBorder.LEFT, TitledBorder.TOP,
-            new Font("Segoe UI", Font.BOLD, 12)
+            new Font("Segoe UI", Font.BOLD, 15)
         ));
         
         editForm.add(new JLabel("Name:"));
@@ -200,7 +200,7 @@ public class RentalAppGUI extends JFrame {
             new Color(235, 100, 85), // Hover
             new Color(192, 57, 43)   // Pressed
         );
-        removeBtn.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        removeBtn.setFont(new Font("Segoe UI", Font.BOLD, 15));
         removeBtn.addActionListener(e -> handleRemoveEquipment());
         editForm.add(removeBtn);
         
@@ -261,7 +261,7 @@ public class RentalAppGUI extends JFrame {
                 "Rental Checkout", 
                 TitledBorder.LEFT, 
                 TitledBorder.TOP,
-                new Font("Segoe UI", Font.BOLD, 13), 
+                new Font("Segoe UI", Font.BOLD, 16), 
                 new Color(41, 128, 185)
             ),
             BorderFactory.createEmptyBorder(5, 5, 5, 5)
@@ -275,10 +275,10 @@ public class RentalAppGUI extends JFrame {
             BorderFactory.createEmptyBorder(5, 10, 5, 10)
         ));
         JLabel durLabel = new JLabel("Rental Duration (Days): ");
-        durLabel.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        durLabel.setFont(new Font("Segoe UI", Font.BOLD, 15));
         durPanel.add(durLabel);
         rentDurationField = new JTextField("3", 5);
-        rentDurationField.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        rentDurationField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         rentDurationField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             public void changedUpdate(javax.swing.event.DocumentEvent e) { updateCartSummary(); }
             public void removeUpdate(javax.swing.event.DocumentEvent e) { updateCartSummary(); }
@@ -309,7 +309,7 @@ public class RentalAppGUI extends JFrame {
             new Color(46, 204, 113), // Hover light green
             new Color(30, 132, 73)   // Pressed dark green
         );
-        checkoutBtn.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        checkoutBtn.setFont(new Font("Segoe UI", Font.BOLD, 18));
         checkoutBtn.addActionListener(e -> handleCheckout());
         btnPanel.add(checkoutBtn, BorderLayout.CENTER);
         
@@ -340,7 +340,7 @@ public class RentalAppGUI extends JFrame {
         JPanel returnForm = new JPanel(new GridLayout(4, 2, 5, 5));
         returnForm.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createEtchedBorder(), "Return Settlement Form", TitledBorder.LEFT, TitledBorder.TOP,
-            new Font("Segoe UI", Font.BOLD, 12)
+            new Font("Segoe UI", Font.BOLD, 15)
         ));
         
         returnForm.add(new JLabel("Actual Duration (Days):"));
@@ -357,7 +357,7 @@ public class RentalAppGUI extends JFrame {
             new Color(46, 204, 113), // Hover light green
             new Color(30, 132, 73)   // Pressed dark green
         );
-        returnBtn.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        returnBtn.setFont(new Font("Segoe UI", Font.BOLD, 15));
         returnBtn.addActionListener(e -> handleReturn());
         returnForm.add(returnBtn);
         
@@ -368,11 +368,11 @@ public class RentalAppGUI extends JFrame {
         JPanel rightPanel = new JPanel(new BorderLayout(5, 5));
         rightPanel.setBorder(BorderFactory.createTitledBorder(
             BorderFactory.createEtchedBorder(), "Billing Settlement Receipt", TitledBorder.LEFT, TitledBorder.TOP,
-            new Font("Segoe UI", Font.BOLD, 12)
+            new Font("Segoe UI", Font.BOLD, 15)
         ));
         receiptArea = new JTextArea(25, 45);
         receiptArea.setEditable(false);
-        receiptArea.setFont(new Font("Courier New", Font.PLAIN, 12));
+        receiptArea.setFont(new Font("Courier New", Font.PLAIN, 15));
         rightPanel.add(new JScrollPane(receiptArea), BorderLayout.CENTER);
         
         panel.add(rightPanel, BorderLayout.EAST);
